@@ -1,7 +1,21 @@
-import '../styles/globals.css'
+import {useState} from 'react';
+import AppContext from '../components/AppContext';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function TriviaApp({Component, pageProps}) {
+    const [state, setState] = useState({
+        gameType: 'basic',
+        updateGameType: (gameType) =>
+            setState((prevState) => ({
+                ...prevState,
+                gameType,
+            })),
+    });
+
+    return (
+        <AppContext.Provider value={{...state}}>
+            <Component {...pageProps} />
+        </AppContext.Provider>
+    );
 }
 
-export default MyApp
+export default TriviaApp;
