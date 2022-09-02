@@ -14,7 +14,7 @@ const QuestionCard = (props) => {
     //let allAnswers = [correct_answer, ...incorrect_answers];
     //allAnswers = shuffle(allAnswers);
     return (
-        <div className="q-card" key={question}>
+        <div className="q-card">
             <div className="q-card__q" dangerouslySetInnerHTML={{__html: question}} />
             {showAnswer ? (
                 <div

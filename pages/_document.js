@@ -11,7 +11,7 @@ export default class MyDocument extends Document {
                     <link rel="icon" href="/favicon.ico" />
                     <style dangerouslySetInnerHTML={{__html: globalStyles}} />
                     <link rel="preconnect" href="https://fonts.googleapis.com" />
-                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
                     <link
                         href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500;800&display=swap"
                         rel="stylesheet"

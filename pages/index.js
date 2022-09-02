@@ -23,7 +23,11 @@ const Home = () => {
                 <div className="questions__container">
                     {Array.isArray(questions) &&
                         questions.map((q) => {
-                            return <QuestionCard {...q} />;
+                            return (
+                                <div key={q?.question}>
+                                    <QuestionCard {...q} />
+                                </div>
+                            );
                         })}
                 </div>
             </Layout>
