@@ -1,14 +1,17 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import AppContext from '../components/AppContext';
+import {fetchCategories} from '../utils/fetchQuestions';
 
 function TriviaApp({Component, pageProps}) {
     const [state, setState] = useState({
-        gameType: 'basic',
-        updateGameType: (gameType) =>
+        categoryId: '',
+        questions: [],
+        updateCategory: (categoryId) => {
             setState((prevState) => ({
                 ...prevState,
-                gameType,
-            })),
+                categoryId,
+            }));
+        },
     });
 
     return (

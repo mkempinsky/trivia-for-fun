@@ -17,7 +17,6 @@ const Button = (props) => {
                         width: 100%;
                     }
                     button:hover {
-                        background: var(--primary-100);
                         transition: all 0.5s;
                     }
                     button:active {
