@@ -40,6 +40,9 @@ const Home = () => {
                     .directions {
                         margin-bottom: 16px;
                     }
+                    .directions i {
+                        font-size: 12px;
+                    }
                     .questions__container {
                         display: grid;
                         grid-template-columns: 1fr;
