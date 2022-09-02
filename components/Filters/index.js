@@ -5,7 +5,7 @@ import AppContext from '../AppContext';
 const Filters = () => {
     const {updateCategory, categoryId} = useContext(AppContext);
 
-    const [showCategoryList, toggleCategoryList] = useState(true);
+    const [showCategoryList, toggleCategoryList] = useState(false);
     return (
         <div className="filters">
             <div className="filter__container">
