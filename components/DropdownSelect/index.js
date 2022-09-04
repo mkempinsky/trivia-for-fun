@@ -3,6 +3,7 @@ import categories from '../../lib/categories';
 import AppContext from '../AppContext';
 import IconChevron from '../Icons/IconChevron';
 import Image from 'next/image';
+import OutsideClick from '../OutsideClick';
 
 const difficultyOptions = ['easy', 'medium', 'hard'];
 
@@ -16,7 +17,7 @@ const DropdownSelect = ({type}) => {
     return (
         <div className="filter__container">
             {type === 'categories' && (
-                <>
+                <OutsideClick onClick={() => toggleCategoryList(false)}>
                     <div className="filter__title">Category:</div>
                     <div className="filter__dropdown">
                         <div
@@ -66,10 +67,10 @@ const DropdownSelect = ({type}) => {
                             </ul>
                         )}
                     </div>
-                </>
+                </OutsideClick>
             )}
             {type === 'difficulty' && (
-                <>
+                <OutsideClick onClick={() => toggleDifficultyList(false)}>
                     <div className="filter__title">Difficulty:</div>
                     <div className="filter__dropdown">
                         <div
@@ -89,6 +90,14 @@ const DropdownSelect = ({type}) => {
                         </div>
                         {showDifficultyList && (
                             <ul>
+                                <li
+                                    onClick={() => {
+                                        updateDifficulty('');
+                                        toggleDifficultyList(false);
+                                    }}>
+                                    <div className="difficulty-icon" />
+                                    <div>Any</div>
+                                </li>
                                 {difficultyOptions.map((item) => {
                                     return (
                                         <li
@@ -96,17 +105,20 @@ const DropdownSelect = ({type}) => {
                                             onClick={() => {
                                                 updateDifficulty(item);
                                                 toggleDifficultyList(false);
-                                            }}
-                                            dangerouslySetInnerHTML={{
-                                                __html: item,
-                                            }}
-                                        />
+                                            }}>
+                                            <div className={`difficulty-icon ${item}`} />
+                                            <div
+                                                dangerouslySetInnerHTML={{
+                                                    __html: item,
+                                                }}
+                                            />
+                                        </li>
                                     );
                                 })}
                             </ul>
                         )}
                     </div>
-                </>
+                </OutsideClick>
             )}
             <style jsx>
                 {`
@@ -157,7 +169,7 @@ const DropdownSelect = ({type}) => {
                         font-weight: 300;
                         text-transform: capitalize;
                         display: grid;
-                        grid-template-columns: 40px auto;
+                        grid-template-columns: 35px auto;
                         align-items: center;
                         grid-gap: 8px;
                     }
@@ -165,12 +177,27 @@ const DropdownSelect = ({type}) => {
                         text-transform: capitalize;
                     }
                     .image {
-                        width: 40px;
-                        height: 40px;
+                        width: 35px;
+                        height: 35px;
                         position: relative;
                         border-radius: 100%;
                         overflow: hidden;
                         background: var(--primry-200);
+                    }
+                    .difficulty-icon {
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 100%;
+                        background: linear-gradient(to right, #9d50bb, #6e48aa);
+                    }
+                    .difficulty-icon.easy {
+                        background: var(--gradient-easy);
+                    }
+                    .difficulty-icon.medium {
+                        background: var(--gradient-medium);
+                    }
+                    .difficulty-icon.hard {
+                        background: var(--gradient-hard);
                     }
                 `}
             </style>

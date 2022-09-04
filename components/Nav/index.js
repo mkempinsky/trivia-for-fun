@@ -2,9 +2,7 @@ const Nav = () => {
     return (
         <div className="nav">
             <div className="nav__title">Trivia for Fun</div>
-            <div className="nav__filter">
-                <div>Category</div>
-            </div>
+            <div className="nav__filter"></div>
             <style jsx>
                 {`
                     .nav {

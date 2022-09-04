@@ -14,10 +14,7 @@ const Button = (props) => {
                         transition: all 0.5s;
                         color: var(--primary-400);
                         font-weight: bold;
-                        width: 100%;
-                    }
-                    button:hover {
-                        transition: all 0.5s;
+                        min-width: 100%;
                     }
                     button:active {
                         transform: translateY(4px);

@@ -1,19 +1,27 @@
+import {useEffect} from 'react';
 import QuestionCard from '../components/QuestionCard';
 import Layout from '../components/Layout';
 import GameSetup from '../components/GameSetup';
 import {useContext} from 'react';
 import AppContext from '../components/AppContext';
+import Button from '../components/Button';
 
 const Home = () => {
-    const {questions} = useContext(AppContext);
+    const {questions, updateQuestions} = useContext(AppContext);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [questions]);
     return (
         <div>
             <Layout>
                 <h1>Trivia for Fun</h1>
-                <div className="directions">
-                    Click the button below to begin the game.
-                </div>
-                <GameSetup />
+                <div className="directions"></div>
+                {questions?.length >= 1 ? (
+                    <Button onClick={() => updateQuestions([])}>New Game</Button>
+                ) : (
+                    <GameSetup />
+                )}
                 <div className="questions__container">
                     {Array.isArray(questions) &&
                         questions.map((q) => {
@@ -24,6 +32,9 @@ const Home = () => {
                             );
                         })}
                 </div>
+                {questions?.length >= 1 && (
+                    <Button onClick={() => updateQuestions([])}>New Game</Button>
+                )}
             </Layout>
             <style jsx>
                 {`

@@ -47,7 +47,7 @@ const QuestionCard = (props) => {
                     )}
                 </>
             )}
-            <div>Difficulty: {difficulty}</div>
+            <div className={`difficulty ${difficulty}`} />
             <style jsx>
                 {`
                     .q-card {
@@ -55,6 +55,7 @@ const QuestionCard = (props) => {
                         border-radius: 4px;
                         padding: 16px;
                         background: #fff;
+                        position: relative;
                     }
                     .q-card__q {
                         font-weight: bold;
@@ -98,6 +99,24 @@ const QuestionCard = (props) => {
                         text-align: center;
                         color: var(--primary-400);
                         text-decoration: underline;
+                    }
+                    .difficulty {
+                        position: absolute;
+                        width: 20px;
+                        height: 20px;
+                        top: -10px;
+                        left: 10px;
+                        border-radius: 100%;
+                        border: 1px solid #fff;
+                    }
+                    .difficulty.easy {
+                        background: var(--gradient-easy);
+                    }
+                    .difficulty.medium {
+                        background: var(--gradient-medium);
+                    }
+                    .difficulty.hard {
+                        background: var(--gradient-hard);
                     }
                 `}
             </style>

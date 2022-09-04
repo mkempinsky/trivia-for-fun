@@ -13,9 +13,29 @@ const GameSetup = () => {
     };
     return (
         <div className="filters">
-            <DropdownSelect type="categories" />
-            <DropdownSelect type="difficulty" />
-            <Button onClick={getQuestions}>Start Trivia Game</Button>
+            <div>
+                <DropdownSelect type="categories" />
+            </div>
+            <div>
+                <DropdownSelect type="difficulty" />
+            </div>
+            <div className="start-btn">
+                <Button theme="start" onClick={getQuestions}>
+                    Start Trivia Game
+                </Button>
+            </div>
+            <style jsx>
+                {`
+                    .filters {
+                        display: grid;
+                        grid-template-columns: 1fr;
+                        grid-gap: 8px;
+                    }
+                    .start-btn {
+                        margin: 8px 0;
+                    }
+                `}
+            </style>
         </div>
     );
 };
