@@ -1,10 +1,11 @@
-const fetchQuestions = async (categoryId) => {
+const fetchQuestions = async (categoryId, difficulty) => {
     let questions = [];
 
-    const category = categoryId ? `&category=${categoryId}` : '';
+    const categoryParam = categoryId ? `&category=${categoryId}` : '';
+    const difficultyParam = difficulty ? `&difficulty=${difficulty}` : '';
 
-    const url = `https://opentdb.com/api.php?amount=10&type=multiple${category}`;
-
+    const url = `https://opentdb.com/api.php?amount=10&type=multiple${categoryParam}${difficultyParam}`;
+    console.log(url);
     await fetch(url)
         .then((res) => res.json())
         .then((data) => {

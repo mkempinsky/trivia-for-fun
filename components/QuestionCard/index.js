@@ -3,7 +3,7 @@ import {shuffle} from '../../utils/helpers';
 import Button from '../Button';
 
 const QuestionCard = (props) => {
-    const {question, correct_answer, incorrect_answers} = props;
+    const {question, difficulty, correct_answer, incorrect_answers} = props;
 
     const [showAnswer, setShowAnswer] = useState(false);
     const [showMultipleChoice, setShowMultipleChoice] = useState(false);
@@ -47,6 +47,7 @@ const QuestionCard = (props) => {
                     )}
                 </>
             )}
+            <div>Difficulty: {difficulty}</div>
             <style jsx>
                 {`
                     .q-card {

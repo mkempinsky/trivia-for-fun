@@ -6,10 +6,23 @@ function TriviaApp({Component, pageProps}) {
     const [state, setState] = useState({
         categoryId: '',
         questions: [],
+        difficulty: '',
         updateCategory: (categoryId) => {
             setState((prevState) => ({
                 ...prevState,
                 categoryId,
+            }));
+        },
+        updateQuestions: (questions) => {
+            setState((prevState) => ({
+                ...prevState,
+                questions,
+            }));
+        },
+        updateDifficulty: (difficulty) => {
+            setState((prevState) => ({
+                ...prevState,
+                difficulty,
             }));
         },
     });

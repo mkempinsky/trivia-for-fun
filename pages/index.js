@@ -1,21 +1,11 @@
-import {useContext, useState} from 'react';
-import Button from '../components/Button';
 import QuestionCard from '../components/QuestionCard';
-import fetchQuestions from '../utils/fetchQuestions';
 import Layout from '../components/Layout';
-import Filters from '../components/Filters';
+import GameSetup from '../components/GameSetup';
+import {useContext} from 'react';
 import AppContext from '../components/AppContext';
 
 const Home = () => {
-    const [questions, setQuestions] = useState([]);
-
-    const {categoryId} = useContext(AppContext);
-
-    const getQuestions = async () => {
-        const response = await fetchQuestions(categoryId);
-        setQuestions(response);
-    };
-
+    const {questions} = useContext(AppContext);
     return (
         <div>
             <Layout>
@@ -23,8 +13,7 @@ const Home = () => {
                 <div className="directions">
                     Click the button below to begin the game.
                 </div>
-                <Button onClick={getQuestions}>Start Trivia Game</Button>
-                <Filters />
+                <GameSetup />
                 <div className="questions__container">
                     {Array.isArray(questions) &&
                         questions.map((q) => {
